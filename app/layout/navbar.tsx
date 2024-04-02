@@ -8,18 +8,19 @@ import { CloseIcon, RepeatIcon } from "@chakra-ui/icons";
 type Props = {
   startGame: () => void;
   restartGame: () => void;
+  score: number;
 };
 
-export const Navbar = ({ startGame, restartGame }: Props) => {
+export const Navbar = ({ startGame, restartGame, score }: Props) => {
   return (
-    <nav className="flex relative z-10 justify-around items-center py-2 -m-12 bg-gray-800 shadow lg:-m-16 xl:-m-24 w-svw shadow-gray-900">
-      <Image className="invert" priority src={FootballIcon} alt="Home" />
-      <div>
+    <nav className="flex relative z-10 justify-evenly items-center py-2 -m-12 bg-gray-800 shadow lg:-m-16 xl:-m-24 w-svw shadow-gray-900">
+      <p className="text-xl font-bold text-center text-white">Score: {score}</p>
+      <div className="flex">
         <Button
           onClick={startGame}
           variant="solid"
           colorScheme="purple"
-          className="mr-2"
+          className="mx-2"
           size="sm"
         >
           <CloseIcon />
@@ -27,9 +28,9 @@ export const Navbar = ({ startGame, restartGame }: Props) => {
         <Button
           onClick={restartGame}
           variant="solid"
-          className="ml-2"
           colorScheme="purple"
           size="sm"
+          className="ml-2"
         >
           <RepeatIcon />
         </Button>

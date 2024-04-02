@@ -99,8 +99,12 @@ export const Game = ({ startGame }: Props) => {
 
   return (
     <>
-      <Navbar startGame={startGame} restartGame={restartGame} />
-      <div className="flex relative z-10 flex-col justify-between items-center mt-8 w-full h-full">
+      <Navbar
+        startGame={startGame}
+        restartGame={restartGame}
+        score={gameState.score}
+      />
+      <div className="flex relative z-10 flex-col justify-between items-center mt-16 w-full h-full">
         {!gameState.gameOver ? (
           <div className="flex flex-col justify-center items-center">
             {gameState.answer ? (
@@ -118,7 +122,7 @@ export const Game = ({ startGame }: Props) => {
                 <PlayerImage playerName="https://campaignopposingpolicesurveillance.com/wp-content/uploads/2017/10/silhouette.jpg" />
               </>
             )}
-            <div className="flex flex-wrap justify-center content-start mt-4 min-h-48">
+            <div className="flex flex-wrap justify-center content-start my-4 md:my-8 lg:my-12">
               {currentPlayer.clubs &&
                 currentPlayer.clubs.map((club: any, index: any) => (
                   <ClubLogo
@@ -153,11 +157,6 @@ export const Game = ({ startGame }: Props) => {
                 >
                   Next
                 </Button>
-              )}{" "}
-              {!gameState.gameOver && (
-                <p className="my-4 text-xl font-bold text-center">
-                  Score: {gameState.score}
-                </p>
               )}
             </div>
           </div>
