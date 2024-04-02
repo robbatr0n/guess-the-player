@@ -13,7 +13,7 @@ type Props = {
 
 export const Navbar = ({ startGame, restartGame, score }: Props) => {
   return (
-    <nav className="flex relative z-10 justify-evenly items-center py-2 -m-12 bg-gray-800 shadow lg:-m-16 xl:-m-24 w-svw shadow-gray-900">
+    <nav className="flex relative z-10 justify-evenly items-center py-2 bg-gray-800 shadow shadow-gray-900">
       <p className="text-xl font-bold text-center text-white">Score: {score}</p>
       <div className="flex">
         <Button
