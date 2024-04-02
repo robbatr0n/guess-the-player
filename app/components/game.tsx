@@ -2,6 +2,7 @@ import { useState } from "react";
 import players from "../data/players";
 import { PlayerImage } from "./player-image";
 import { Button, Container } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
 import { CloseIcon, RepeatIcon } from "@chakra-ui/icons";
 import ClubLogo from "./club-logo";
 import { Input } from "@chakra-ui/react";
@@ -124,7 +125,14 @@ export const Game = ({ startGame }: Props) => {
                   <p className="mb-8 text-2xl font-bold text-center text-transparent lg:mb-12 lg:text-3xl">
                     {currentPlayer.name}
                   </p>
-                  <PlayerImage currentPlayer={currentPlayer} />
+                  <div className="">
+                    <Image
+                      boxSize={{ base: "150px", md: "175px", lg: "200px" }}
+                      objectFit="cover"
+                      src="https://campaignopposingpolicesurveillance.com/wp-content/uploads/2017/10/silhouette.jpg"
+                      alt="?"
+                    />
+                  </div>
                 </>
               )}
               <div className="flex flex-wrap justify-center content-start my-4 md:my-8 lg:my-12">

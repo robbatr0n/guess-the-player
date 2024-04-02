@@ -12,7 +12,7 @@ export const PlayerImage = ({ currentPlayer }: Props) => {
         boxSize={{ base: "150px", md: "175px", lg: "200px" }}
         objectFit="cover"
         src={currentPlayer.image}
-        alt="Dan Abramov"
+        alt={currentPlayer.name}
       />
     </div>
   );
