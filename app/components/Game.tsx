@@ -5,6 +5,7 @@ import { Button } from "@chakra-ui/react";
 import { CloseIcon, RepeatIcon } from "@chakra-ui/icons";
 import ClubLogo from "./club-logo";
 import { Input } from "@chakra-ui/react";
+import { Navbar } from "../layout/navbar";
 
 interface IPlayer {
   name: string;
@@ -97,92 +98,76 @@ export const Game = ({ startGame }: Props) => {
   console.log(currentPlayer.name);
 
   return (
-    <div className="flex relative z-10 flex-col justify-between items-center w-full h-full">
-      {!gameState.gameOver ? (
-        <div className="flex flex-col justify-center items-center">
-          {gameState.answer ? (
-            <>
-              <p className="mb-8 text-2xl font-bold text-center text-white lg:mb-12 lg:text-3xl">
-                {currentPlayer.name}
-              </p>
-              <PlayerImage playerName={currentPlayer.name} />
-            </>
-          ) : (
-            <>
-              <p className="mb-8 text-2xl font-bold text-center text-transparent lg:mb-12 lg:text-3xl">
-                {currentPlayer.name}
-              </p>
-              <PlayerImage playerName="https://campaignopposingpolicesurveillance.com/wp-content/uploads/2017/10/silhouette.jpg" />
-            </>
-          )}
-          <div className="flex flex-wrap justify-center content-start my-8 min-h-48">
-            {currentPlayer.clubs &&
-              currentPlayer.clubs.map((club: any, index: any) => (
-                <ClubLogo
-                  club={club}
-                  isLoading={isLoading}
-                  setIsLoading={setIsLoading}
-                  key={index}
-                />
-              ))}
-          </div>
-          <div className="flex flex-col justify-center p-4 bg-white md:w-96">
-            <Input
-              value={gameState.input}
-              type="Name"
-              className="mb-2 bg-white"
-              placeholder="Player name..."
-              onChange={handleInput}
-            />
-            {!gameState.answer ? (
-              <Button
-                colorScheme="purple"
-                size={{ base: "md", lg: "lg" }}
-                onClick={checkAnswer}
-              >
-                SUBMIT
-              </Button>
+    <>
+      <Navbar startGame={startGame} restartGame={restartGame} />
+      <div className="flex relative z-10 flex-col justify-between items-center mt-8 w-full h-full">
+        {!gameState.gameOver ? (
+          <div className="flex flex-col justify-center items-center">
+            {gameState.answer ? (
+              <>
+                <p className="mb-8 text-2xl font-bold text-center text-white lg:mb-12 lg:text-3xl">
+                  {currentPlayer.name}
+                </p>
+                <PlayerImage playerName={currentPlayer.name} />
+              </>
             ) : (
-              <Button
-                colorScheme="purple"
-                size={{ base: "md", lg: "lg" }}
-                onClick={generateNewPlayer}
-              >
-                Next
-              </Button>
-            )}{" "}
-            {!gameState.gameOver && (
-              <p className="my-4 text-xl font-bold text-center">
-                Score: {gameState.score}
-              </p>
+              <>
+                <p className="mb-8 text-2xl font-bold text-center text-transparent lg:mb-12 lg:text-3xl">
+                  {currentPlayer.name}
+                </p>
+                <PlayerImage playerName="https://campaignopposingpolicesurveillance.com/wp-content/uploads/2017/10/silhouette.jpg" />
+              </>
             )}
+            <div className="flex flex-wrap justify-center content-start mt-4 min-h-48">
+              {currentPlayer.clubs &&
+                currentPlayer.clubs.map((club: any, index: any) => (
+                  <ClubLogo
+                    club={club}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
+                    key={index}
+                  />
+                ))}
+            </div>
+            <div className="flex flex-col justify-center p-4 bg-white md:w-96">
+              <Input
+                value={gameState.input}
+                type="Name"
+                className="mb-2 bg-white"
+                placeholder="Player name..."
+                onChange={handleInput}
+              />
+              {!gameState.answer ? (
+                <Button
+                  colorScheme="purple"
+                  size={{ base: "md", lg: "lg" }}
+                  onClick={checkAnswer}
+                >
+                  SUBMIT
+                </Button>
+              ) : (
+                <Button
+                  colorScheme="purple"
+                  size={{ base: "md", lg: "lg" }}
+                  onClick={generateNewPlayer}
+                >
+                  Next
+                </Button>
+              )}{" "}
+              {!gameState.gameOver && (
+                <p className="my-4 text-xl font-bold text-center">
+                  Score: {gameState.score}
+                </p>
+              )}
+            </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <p>test</p>
-        </div>
-      )}
-      <div className="flex justify-around w-full">
-        <Button
-          onClick={restartGame}
-          variant="solid"
-          className="mt-8"
-          colorScheme="purple"
-          size={{ base: "md", lg: "lg" }}
-        >
-          <RepeatIcon />
-        </Button>
-        <Button
-          onClick={startGame}
-          variant="solid"
-          className="mt-8"
-          colorScheme="purple"
-          size={{ base: "md", lg: "lg" }}
-        >
-          <CloseIcon />
-        </Button>
+        ) : (
+          <div>
+            <p>test</p>
+          </div>
+        )}
+        <div className="flex justify-around w-full"></div>
       </div>
-    </div>
+    </>
   );
 };
