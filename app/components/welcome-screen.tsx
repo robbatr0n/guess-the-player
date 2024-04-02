@@ -8,7 +8,7 @@ type Props = {
 
 export const WelcomeScreen = ({ startGame }: Props) => {
   return (
-    <section className="flex relative z-10 flex-col items-center">
+    <section className="flex relative z-10 flex-col items-center pt-8 lg:pt-16 md:pt-12">
       <Container centerContent>
         <Image
           src={Silhouette}
@@ -29,6 +29,7 @@ export const WelcomeScreen = ({ startGame }: Props) => {
           className="mt-8"
           colorScheme="green"
           onClick={startGame}
+          size="lg"
         >
           Play!
         </Button>

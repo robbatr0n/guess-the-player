@@ -16,15 +16,7 @@ export const Navbar = ({ startGame, restartGame, score }: Props) => {
     <nav className="flex relative z-10 justify-evenly items-center py-2 bg-gray-800 shadow shadow-gray-900">
       <p className="text-xl font-bold text-center text-white">Score: {score}</p>
       <div className="flex">
-        <Button
-          onClick={startGame}
-          variant="solid"
-          colorScheme="purple"
-          className="mx-2"
-          size="sm"
-        >
-          <CloseIcon />
-        </Button>
+        {" "}
         <Button
           onClick={restartGame}
           variant="solid"
@@ -33,6 +25,15 @@ export const Navbar = ({ startGame, restartGame, score }: Props) => {
           className="ml-2"
         >
           <RepeatIcon />
+        </Button>
+        <Button
+          onClick={startGame}
+          variant="solid"
+          colorScheme="purple"
+          className="mx-2"
+          size="sm"
+        >
+          <CloseIcon />
         </Button>
       </div>
     </nav>

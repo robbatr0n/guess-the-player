@@ -11,6 +11,7 @@ import { GameOver } from "./game-over";
 interface IPlayer {
   name: string;
   clubs: string[];
+  image: string;
 }
 
 type Props = {
@@ -98,7 +99,7 @@ export const Game = ({ startGame }: Props) => {
     setCurrentPlayer(player);
   };
 
-  console.log(currentPlayer.name);
+  console.log(typeof currentPlayer);
 
   return (
     <>
@@ -108,7 +109,7 @@ export const Game = ({ startGame }: Props) => {
         score={gameState.score}
       />
       <Container h={x} centerContent>
-        <div className="flex relative z-10 flex-col pt-8 w-full h-full">
+        <div className="flex relative z-10 flex-col pt-8 w-full h-full lg:pt-16 md:pt-12">
           {!gameState.gameOver ? (
             <div className="flex flex-col items-center">
               {gameState.answer ? (
@@ -116,14 +117,14 @@ export const Game = ({ startGame }: Props) => {
                   <p className="mb-8 text-2xl font-bold text-center text-white lg:mb-12 lg:text-3xl">
                     {currentPlayer.name}
                   </p>
-                  <PlayerImage playerName={currentPlayer.name} />
+                  <PlayerImage currentPlayer={currentPlayer} />
                 </>
               ) : (
                 <>
                   <p className="mb-8 text-2xl font-bold text-center text-transparent lg:mb-12 lg:text-3xl">
                     {currentPlayer.name}
                   </p>
-                  <PlayerImage playerName="https://campaignopposingpolicesurveillance.com/wp-content/uploads/2017/10/silhouette.jpg" />
+                  <PlayerImage currentPlayer={currentPlayer} />
                 </>
               )}
               <div className="flex flex-wrap justify-center content-start my-4 md:my-8 lg:my-12">
